@@ -1,8 +1,6 @@
 import re
 from cloudshell.networking.sdn.autoload.sdn_generic_snmp_autoload import SDNGenericSNMPAutoload
-from cloudshell.networking.huawei.huawei_configuration_operations import HuaweiConfigurationOperations
-from cloudshell.networking.huawei.huawei_connectivity_operations import HuaweiConnectivityOperations
-from cloudshell.networking.huawei.huawei_send_command_operations import HuaweiSendCommandOperations
+
 from cloudshell.shell.core.context_utils import get_decrypted_password_by_attribute_name_wrapper, \
     get_attribute_by_name_wrapper
 from cloudshell.shell.core.dependency_injection.context_based_logger import get_logger_with_thread_id
@@ -18,11 +16,11 @@ SUPPORTED_OPENFLOW = ['1.0','1.3']
 
 
 
-CONNECTIVITY_OPERATIONS_CLASS = HuaweiConnectivityOperations
-CONFIGURATION_OPERATIONS_CLASS = HuaweiConfigurationOperations
-FIRMWARE_OPERATIONS_CLASS = HuaweiConfigurationOperations
+CONNECTIVITY_OPERATIONS_CLASS = ''
+CONFIGURATION_OPERATIONS_CLASS = ''
+FIRMWARE_OPERATIONS_CLASS = ''
 AUTOLOAD_OPERATIONS_CLASS = SDNGenericSNMPAutoload
-SEND_COMMAND_OPERATIONS_CLASS = HuaweiSendCommandOperations
+SEND_COMMAND_OPERATIONS_CLASS = ''
 CONTOLLER_HANDLER = 'controller_handler'
 
 

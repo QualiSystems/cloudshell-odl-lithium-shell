@@ -80,6 +80,7 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
         autoload_operations = inject.instance("autoload_operations")
         response = autoload_operations.discover()
         autoload_operations.logger.info('Autoload completed')
+
         return response
 
     @GlobalLock.lock

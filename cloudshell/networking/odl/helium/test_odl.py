@@ -21,10 +21,10 @@ def create_context():
     context.resource.attributes['User'] = 'admin'
     context.resource.attributes['AdminUser'] = 'admin'
 
-    context.resource.attributes['Password'] = 'admin'
+    context.resource.attributes['Password'] = 'DxTbqlSgAVPmrDLlHvJrsA=='
 
     context.resource.address = '192.168.42.203'
-    context.resource.port = '8080'
+    context.resource.attributes['Port'] = '8080'
 
     context.resource.attributes['Model'] = 'OpenDayLight Helium'
     context.resource.attributes['AdminPassword'] ='admin'
