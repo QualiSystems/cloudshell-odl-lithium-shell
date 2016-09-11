@@ -10,13 +10,13 @@ import cloudshell.networking.odl.helium.odl_helium_configuration as driver_confi
 
 from cloudshell.networking.sdn.controller.controller_connection_handler import SDNController
 
+
 class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverInterface, GlobalLock):
     def __init__(self):
         super(ODLHeliumResourceDriver, self).__init__()
         bootstrap = NetworkingGenericBootstrap()
         bootstrap.add_config(driver_config)
         bootstrap.initialize()
-
 
     @context_from_args
     def initialize(self, context):
@@ -26,11 +26,10 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
 
         return 'Finished initializing'
 
-
-
     def cleanup(self):
         pass
-#
+
+    #
     @context_from_args
     def ApplyConnectivityChanges(self, context, request):
         connectivity_operations = inject.instance('connectivity_operations')
@@ -61,18 +60,19 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
 
     @context_from_args
     def save(self, context, folder_path, configuration_type='', vrf=None):
-
-
         configuration_operations = inject.instance('configuration_operations')
         response = configuration_operations.save_configuration(folder_path, configuration_type, vrf)
         configuration_operations.logger.info('Save completed')
         return response
 
     @context_from_args
-    def Install_Static_Flows(self, context, flow_name, switch_id,switch_mac,src_port,dst_port,src_ip,dst_ip,ether_type):
+    def Install_Static_Flows(self, context, flow_name, switch_id, switch_mac, src_port, dst_port, src_ip, dst_ip,
+                             ether_type):
         static_flow = driver_config.STATIC_FLOW()
-        static_flow.static_flow_pusher(flow_name, switch_id,switch_mac,src_port,dst_port,src_ip,dst_ip,ether_type)
+        response = static_flow.static_flow_pusher(flow_name, switch_id, switch_mac, src_port, dst_port, src_ip, dst_ip,
+                                                  ether_type)
 
+        return response
 
     @context_from_args
     def get_inventory(self, context):
