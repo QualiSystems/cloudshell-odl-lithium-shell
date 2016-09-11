@@ -25,6 +25,8 @@
 			<Parameter Name="switch_mac" Type="String" Mandatory = "True" DisplayName="Switch MAC Address" DefaultValue=""  Description=""/>
 			<Parameter Name="src_port" Type="String" Mandatory = "True" DisplayName="Input Port" DefaultValue=""  Description=""/>
 			<Parameter Name="dst_port" Type="String" Mandatory = "True" DisplayName="Out Port" DefaultValue=""  Description=""/>
+			<Parameter Name="src_ip" Type="String" Mandatory = "True" DisplayName="Source IP" DefaultValue=""  Description=""/>
+			<Parameter Name="dst_ip" Type="String" Mandatory = "True" DisplayName="Destination IP" DefaultValue=""  Description=""/>
 			<Parameter Name="ether_type" Type="String" Mandatory = "False" DisplayName="Ethernet Type" DefaultValue=""  Description=""/>
         </Parameters>
       </Command>

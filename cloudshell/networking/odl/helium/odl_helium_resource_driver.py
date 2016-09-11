@@ -68,6 +68,11 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
         configuration_operations.logger.info('Save completed')
         return response
 
+    @context_from_args
+    def Install_Static_Flows(self, context, flow_name, switch_id,switch_mac,src_port,dst_port,src_ip,dst_ip,ether_type):
+        static_flow = driver_config.STATIC_FLOW()
+        static_flow.static_flow_pusher(flow_name, switch_id,switch_mac,src_port,dst_port,src_ip,dst_ip,ether_type)
+
 
     @context_from_args
     def get_inventory(self, context):
