@@ -31,47 +31,11 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
     def cleanup(self):
         pass
 #
-    @context_from_args
-    def ApplyConnectivityChanges(self, context, request):
-        connectivity_operations = inject.instance('connectivity_operations')
-        connectivity_operations.logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
-        response = connectivity_operations.apply_connectivity_changes(request)
-        connectivity_operations.logger.info('Finished applying connectivity changes, responce is: {0}'.format(str(
-            response)))
-        connectivity_operations.logger.info('Apply Connectivity changes completed')
-        return response
-
-    @GlobalLock.lock
-    @context_from_args
-    def restore(self, context, path, config_type, restore_method, vrf=None):
-        """Restore selected file to the provided destination
-
-        :param path: source config file
-        :param config_type: running or startup configs
-        :param restore_method: append or override methods
-        :param vrf: VRF management Name
-        """
-
-        configuration_operations = inject.instance('configuration_operations')
-
-        response = configuration_operations.restore_configuration(source_path=path, restore_method=restore_method,
-                                                                  configuration_type=config_type, vrf=vrf)
-        configuration_operations.logger.info('Restore completed')
-        configuration_operations.logger.info(response)
 
     @context_from_args
-    def save(self, context, folder_path, configuration_type='', vrf=None):
-
-
-        configuration_operations = inject.instance('configuration_operations')
-        response = configuration_operations.save_configuration(folder_path, configuration_type, vrf)
-        configuration_operations.logger.info('Save completed')
-        return response
-
-    @context_from_args
-    def Install_Static_Flows(self, context, flow_name, switch_id,switch_mac,src_port,dst_port,src_ip,dst_ip,ether_type):
+    def Install_Static_Flows(self, context, flow_name, switch_id,port):
         static_flow = driver_config.STATIC_FLOW()
-        response = static_flow.static_flow_pusher(flow_name, switch_id,switch_mac,src_port,dst_port,src_ip,dst_ip,ether_type)
+        response = static_flow.static_flow_pusher(flow_name, switch_id,port)
 
         return response
 
@@ -88,46 +52,14 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
         autoload_operations.logger.info('Autoload completed')
 
         return response
-
-    @GlobalLock.lock
+    '''
     @context_from_args
-    def update_firmware(self, context, remote_host, file_path):
-        """Upload and updates firmware on the resource
-
-        :param remote_host: path to tftp:// server where firmware file is stored
-        :param file_path: firmware file name
-        :return: result
-        :rtype: string
-        """
-
-        firmware_operations = inject.instance("firmware_operations")
-        response = firmware_operations.update_firmware(remote_host=remote_host, file_path=file_path)
-        firmware_operations.logger.info(response)
-
-    @context_from_args
-    def send_custom_command(self, context, command):
-        """Send custom command
-
-        :return: result
-        :rtype: string
-        """
-
-        send_command_operations = inject.instance("send_command_operations")
-        response = send_command_operations.send_command(command=command)
-        print response
+    def ApplyConnectivityChanges(self, context, request):
+        connectivity_operations = inject.instance('connectivity_operations')
+        connectivity_operations.logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
+        response = connectivity_operations.apply_connectivity_changes(request)
+        connectivity_operations.logger.info('Finished applying connectivity changes, responce is: {0}'.format(str(
+            response)))
+        connectivity_operations.logger.info('Apply Connectivity changes completed')
         return response
-
-    @context_from_args
-    def send_custom_config_command(self, context, command):
-        """Send custom command in configuration mode
-
-        :return: result
-        :rtype: string
-        """
-        send_command_operations = inject.instance("send_command_operations")
-        result_str = send_command_operations.send_config_command(command=command)
-        return result_str
-
-    @context_from_args
-    def shutdown(self, context):
-        pass
+    '''
