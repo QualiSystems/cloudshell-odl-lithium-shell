@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     #res = driver.get_inventory(context)
     #flow_name, switch_id,switch_mac,src_port,dst_port,src_ip,dst_ip,ether_type
-    res = driver.Install_Static_Flows(context,'test114','00:00:00:00:00:00:00:03','00:00:00:00:00:03',1,2,'10.0.0.1','10.0.0.4',0x800)
+    res = driver.Install_Static_Flows(context,'test114','00:00:00:00:00:00:00:03',3) #,'00:00:00:00:00:02',1,2,'10.0.0.1','10.0.0.4',0x800)
     #
     #res = driver.save(context, 'flash:/config_backup/','startup')
     #C:/Users/Administrator/Desktop/test
