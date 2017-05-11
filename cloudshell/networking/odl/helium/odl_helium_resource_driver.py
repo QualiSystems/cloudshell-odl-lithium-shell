@@ -31,8 +31,14 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
     def cleanup(self):
         pass
 #
-
+    def restore(self):pass
+    def save(self):pass
+    def send_custom_command(self):pass
+    def send_custom_config_command(self):pass
+    def shutdown(self):pass
+    def update_firmware(self):pass
     @context_from_args
+
     def Install_Static_Flows(self, context, flow_name, switch_id,port):
         static_flow = driver_config.STATIC_FLOW()
         response = static_flow.static_flow_pusher(flow_name, switch_id,port)
@@ -52,14 +58,11 @@ class ODLHeliumResourceDriver(ResourceDriverInterface, NetworkingResourceDriverI
         autoload_operations.logger.info('Autoload completed')
 
         return response
-    '''
+
+
+
     @context_from_args
     def ApplyConnectivityChanges(self, context, request):
         connectivity_operations = inject.instance('connectivity_operations')
-        connectivity_operations.logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
-        response = connectivity_operations.apply_connectivity_changes(request)
-        connectivity_operations.logger.info('Finished applying connectivity changes, responce is: {0}'.format(str(
-            response)))
-        connectivity_operations.logger.info('Apply Connectivity changes completed')
-        return response
-    '''
+
+        return ""
