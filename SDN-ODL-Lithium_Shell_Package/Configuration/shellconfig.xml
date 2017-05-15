@@ -12,12 +12,9 @@ xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSch
         <Attributes>
 			<Attribute Name="User" Value="" />
 			<Attribute Name="Password" Value="" />
-            <Attribute Name="AdminUser" Value="" />
-            <Attribute Name="AdminPassword" Value="" />
-            <Attribute Name="Address" Value="" />
-            <Attribute Name="Port" Value="0" />
-			<Attribute Name="Backup Location" Value="" />
-
+            <Attribute Name="Admin User" Value="" />
+            <Attribute Name="Admin Password" Value="" />
+            <Attribute Name="Port" Value="80" />
         </Attributes>
     </ResourceTemplate>
 
